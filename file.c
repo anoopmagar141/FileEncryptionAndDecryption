@@ -2,6 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+void encryptDecryptFile(const char *inputFile, const char *outputFile, const char *key) {
+    FILE *fin = fopen(inputFile, "rb");  // Open input file in binary read mode
+    FILE *fout = fopen(outputFile, "wb");  // Open output file in binary write mode
+
+    if (fin == NULL) {
+        printf("Error: Unable to open input file '%s'.\n", inputFile);
+        exit(EXIT_FAILURE);
+    }
+    if (fout == NULL) {
+        printf("Error: Unable to open output file '%s'.\n", outputFile);
+        fclose(fin);
+        exit(EXIT_FAILURE);
+    }
+
+
 
 int main() {
     char inputFile[100], outputFile[100];
