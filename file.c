@@ -25,6 +25,20 @@ int main() {
     printf("Enter the output file name: ");
     scanf("%s", outputFile);
 
+    if (strcmp(inputFile, outputFile) == 0) {
+        printf("Error: Input and output file names must be different to avoid overwriting.\n");
+        return EXIT_FAILURE;
+    }
 
+    
+    if (choice == 1) {
+        printf("Enter a key for encryption (multiple characters allowed): ");
+    } else {
+        printf("Enter a key for decryption (multiple characters allowed): ");
+    }
+
+    scanf("%s", key);
+
+   
     return 0;
 }
