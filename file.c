@@ -15,8 +15,28 @@ void encryptDecryptFile(const char *inputFile, const char *outputFile, const cha
         fclose(fin);
         exit(EXIT_FAILURE);
     }
+  char ch;
+    int keyLength = strlen(key);  // Length of the key
+    int keyIndex = 0;  // Index to track position in the key
+
+    while ((ch = fgetc(fin)) != EOF) {
+        char processedChar = ch ^ key[keyIndex];  // XOR operation
+
+        // Debugging: Print original and processed characters as ASCII values
+        printf("Original: %d, Processed: %d\n", ch, processedChar);
+
+        fputc(processedChar, fout);  // Write the processed character to the output file
+
+        // Move to the next character in the key (loop back if needed)
+        keyIndex = (keyIndex + 1) % keyLength;
+    }
 
 
+    fclose(fin);
+    fclose(fout);
+
+    printf("Operation completed successfully. Output saved to '%s'.\n", outputFile);
+}
 
 int main() {
     char inputFile[100], outputFile[100];
