@@ -38,6 +38,21 @@ int main() {
     }
 
     scanf("%s", key);
+ if (strlen(key) == 0) {
+        printf("Error: Key must not be empty. Exiting...\n");
+        return EXIT_FAILURE;
+    }
+
+    if (choice == 1) {
+        printf("\nStarting encryption...\n");
+    } else {
+        printf("\nStarting decryption...\n");
+    }
+
+    
+    encryptDecryptFile(inputFile, outputFile, key);
+
+    printf("\nFile operation finished.\n");
 
    
     return 0;
