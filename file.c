@@ -15,7 +15,8 @@ void encryptDecryptFile(const char *inputFile, const char *outputFile, const cha
         fclose(fin);
         exit(EXIT_FAILURE);
     }
-  char ch;
+
+    char ch;
     int keyLength = strlen(key);  // Length of the key
     int keyIndex = 0;  // Index to track position in the key
 
@@ -30,7 +31,6 @@ void encryptDecryptFile(const char *inputFile, const char *outputFile, const cha
         // Move to the next character in the key (loop back if needed)
         keyIndex = (keyIndex + 1) % keyLength;
     }
-
 
     fclose(fin);
     fclose(fout);
@@ -65,30 +65,32 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    
+    // Displaying prompt based on encryption or decryption choice
     if (choice == 1) {
         printf("Enter a key for encryption (multiple characters allowed): ");
     } else {
         printf("Enter a key for decryption (multiple characters allowed): ");
     }
 
+    // Allowing user to input a string (key) with multiple characters
     scanf("%s", key);
- if (strlen(key) == 0) {
+
+    if (strlen(key) == 0) {
         printf("Error: Key must not be empty. Exiting...\n");
         return EXIT_FAILURE;
     }
 
+    // Displaying the operation being performed
     if (choice == 1) {
         printf("\nStarting encryption...\n");
     } else {
         printf("\nStarting decryption...\n");
     }
 
-    
+    // Perform encryption or decryption depending on the user's choice
     encryptDecryptFile(inputFile, outputFile, key);
 
     printf("\nFile operation finished.\n");
 
-   
     return 0;
 }
